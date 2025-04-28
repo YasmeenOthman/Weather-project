@@ -1,0 +1,8 @@
+/* src/components/Highlights/Highlights.css */  
+.highlights-card {
+    background-color: #29293d;
+    padding: 20px;
+    border-radius: 15px;
+    flex: 1;
+  }
+  
