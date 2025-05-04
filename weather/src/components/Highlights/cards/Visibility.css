@@ -1,0 +1,23 @@
+.visibility-card {
+  background-color: #1e1e2f;
+  border-radius: 15px;
+  height: 100px;
+  padding: 15px;
+  font-size: 14px;
+}
+
+.visibility-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.visibility-card-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.visibility-card-content-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}

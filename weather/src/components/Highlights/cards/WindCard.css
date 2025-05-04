@@ -1,0 +1,23 @@
+/* src/components/Highlights/WindCard.css */
+
+.wind-card {
+  background-color: #1e1e2f;
+  border-radius: 15px;
+  padding: 20px;
+  flex: 1 1 200px;
+  /* min-width: 180px; */
+}
+.wind-card h3 {
+  margin-bottom: 10px;
+  color: #ccc;
+}
+
+.wind-speed {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.wind-direction {
+  font-size: 14px;
+  color: #aaa;
+}

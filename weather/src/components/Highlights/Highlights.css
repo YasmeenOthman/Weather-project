@@ -1,8 +1,33 @@
-/* src/components/Highlights/Highlights.css */  
-.highlights-card {
-    background-color: #29293d;
-    padding: 20px;
-    border-radius: 15px;
-    flex: 1;
+/* src/components/Highlights/Highlights.css */
+
+.highlights {
+  background-color: #29293d;
+  padding: 20px;
+  border-radius: 20px;
+  flex: 3;
+  background-color: red;
+}
+
+.highlights h2 {
+  margin-bottom: 20px;
+  font-size: 18px;
+  color: #fff;
+}
+
+.highlights-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* 3 vertical columns */
+  gap: 20px;
+}
+
+.highlight-column {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+@media (max-width: 768px) {
+  .highlights-grid {
+    grid-template-columns: repeat(1, 1fr);
   }
-  
+}
