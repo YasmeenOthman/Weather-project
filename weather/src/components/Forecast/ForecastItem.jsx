@@ -15,7 +15,7 @@ const ForecastItem = () => {
         <span className="low-temp">+18°</span>
       </div>
       <div className="forecast-date">
-        <span className="day">25 July</span>
+        <span className="day">25 July,</span>
         <span className="weekday">Tuesday</span>
       </div>
     </div>

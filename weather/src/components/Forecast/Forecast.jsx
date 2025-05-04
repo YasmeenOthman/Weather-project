@@ -1,6 +1,7 @@
 import React from "react";
 import ForecastItem from "./ForecastItem";
 import "./Forecast.css";
+import TomorrowCard from "./TomorrowCard";
 
 const Forecast = () => {
   return (
@@ -22,20 +23,7 @@ const Forecast = () => {
         <ForecastItem />
         <ForecastItem />
         <div className="forecast-detail">
-          <div>
-            <img
-              src="../src/assets/icons/thunderstorm.png"
-              alt="Weather"
-              width={30}
-              height={30}
-            />
-          </div>
-          <div>
-            <p className="forecast-label">Tomorrow</p>
-            <span className="temp">23°</span>
-            <p className="forecast-description">Thunder Storm day</p>
-          </div>
-          <div className="forecast-chart-placeholder">chart</div>
+          <TomorrowCard />
         </div>
       </div>
     </div>

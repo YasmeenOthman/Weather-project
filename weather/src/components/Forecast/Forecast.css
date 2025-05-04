@@ -6,6 +6,8 @@
   display: flex;
   flex-direction: column;
 }
+
+/* Forecast Header */
 .forecast-header {
   display: flex;
   justify-content: space-between;
@@ -22,11 +24,13 @@
 .forecast-select {
   color: white;
   border: none;
+  outline: none;
   padding: 10px;
   border-radius: 0.8rem;
   background-color: #29293d;
 }
 
+/* Forecast Item */
 .forecast-item {
   display: flex;
   align-items: center;
@@ -39,51 +43,49 @@
   padding: 10px;
   border-radius: 15px;
 }
-.forecast-date {
-  font-size: 12px;
-}
+
 .forecast-temp {
-  font-size: 12px;
-}
-.forecast-icon {
-  width: 30px;
-  height: 30px;
-}
-
-.forecast-detail {
-  background-color: #1e1e2f;
-  border-radius: 15px;
-  padding: 10px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-top: 10px;
-  width: 100%; /* fits within parent container */
-  max-width: 100%; /* prevents overflow */
-}
-
-.forecast-label {
-  color: #ccc;
-  font-size: 14px;
-  margin-bottom: 10px;
-}
-
-.forecast-detail-temp {
   display: flex;
   align-items: center;
   gap: 10px;
-  font-size: 24px;
+  font-size: 14px;
   font-weight: bold;
 }
 
-.forecast-description {
+.forecast-date {
   color: #aaa;
-  font-size: 14px;
+  font-size: 12px;
 }
 
-.forecast-chart-placeholder {
-  height: 40px;
-  background-color: rgba(255, 255, 255, 0.1);
-  border-radius: 8px;
-  margin-top: 10px;
+/* Tomorrow Card */
+.tomorrow-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #29293d;
+  padding: 10px;
+  gap: 10px;
+}
+.tomorrow-card-content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+.tomorrow-label {
+  font-size: 14px;
+  font-weight: bold;
+}
+.tomorrow-temp {
+  font-size: 12px;
+}
+.tomorrow-description {
+  font-size: 12px;
+}
+.tomorrow-icon {
+  width: 30px;
+  height: 30px;
+}
+.tomorrow-chart {
+  /* width: 100%; */
 }
