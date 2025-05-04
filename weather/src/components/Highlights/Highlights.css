@@ -1,10 +1,10 @@
 /* src/components/Highlights/Highlights.css */
 
 .highlights {
-  background-color: #29293d;
   padding: 20px;
   border-radius: 20px;
   flex: 3;
+  background: linear-gradient(135deg, #29293d, #203a43, #2c5364);
 }
 
 .highlights h2 {

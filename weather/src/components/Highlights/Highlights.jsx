@@ -1,11 +1,11 @@
 // src/components/Highlights/Highlights.jsx
 import "./Highlights.css";
-import WindCard from "./cards/WindCard";
-import UVCard from "./cards/UVCard";
-import SunriseCard from "./cards/SunriseCard";
-import Humidity from "./cards/Humidity";
-import Visibility from "./cards/Visibility";
-import FeelsLike from "./cards/FeelsLike";
+import WindCard from "./cards/maincards/WindCard";
+import UVCard from "./cards/maincards/UVCard";
+import SunriseCard from "./cards/maincards/SunriseCard";
+import Humidity from "./cards/smallcards/Humidity";
+import Visibility from "./cards/smallcards/Visibility";
+import FeelsLike from "./cards/smallcards/FeelsLike";
 
 function Highlights() {
   return (

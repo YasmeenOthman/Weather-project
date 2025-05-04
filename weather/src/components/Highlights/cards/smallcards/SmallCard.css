@@ -1,22 +1,25 @@
-.feels-like-card {
+.small-card {
   background-color: #1e1e2f;
   border-radius: 15px;
   height: 100px;
   padding: 15px;
   font-size: 14px;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
 
-.feels-like-card-header {
+.small-card-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
-.feels-like-card-content {
+
+.small-card-content {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
-.feels-like-card-content-header {
+
+.small-card-content-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
