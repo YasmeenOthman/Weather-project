@@ -1,5 +1,5 @@
 // src/components/Sidebar/Sidebar.jsx
-import './Sidebar.css';
+import "./Sidebar.css";
 
 function Sidebar() {
   return (
@@ -12,7 +12,12 @@ function Sidebar() {
         <a href="#">Settings</a>
       </nav>
       <div className="profile">
-        <img src="https://via.placeholder.com/40" alt="Profile" />
+        <img
+          src="https://www.pngplay.com/wp-content/uploads/12/User-Avatar-Profile-Clip-Art-Transparent-PNG.png"
+          alt="Profile"
+          width={40}
+          height={40}
+        />
       </div>
     </aside>
   );

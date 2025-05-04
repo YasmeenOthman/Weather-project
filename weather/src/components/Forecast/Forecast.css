@@ -1,7 +1,89 @@
-.forecast-card {
-    background-color: #29293d;
-    padding: 20px;
-    border-radius: 15px;
-    flex: 1;
-  }
-  
+.forecast-container {
+  border-radius: 20px;
+  padding: 20px;
+  background: linear-gradient(135deg, #29293d, #203a43, #2c5364);
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+.forecast-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+}
+
+.forecast-header h2 {
+  font-size: 18px;
+  font-weight: bold;
+  color: white;
+}
+
+.forecast-select {
+  color: white;
+  border: none;
+  padding: 10px;
+  border-radius: 0.8rem;
+  background-color: #29293d;
+}
+
+.forecast-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: white;
+  background-color: #29293d;
+  margin: 3px;
+  width: 100%;
+  max-width: 100%;
+  padding: 10px;
+  border-radius: 15px;
+}
+.forecast-date {
+  font-size: 12px;
+}
+.forecast-temp {
+  font-size: 12px;
+}
+.forecast-icon {
+  width: 30px;
+  height: 30px;
+}
+
+.forecast-detail {
+  background-color: #1e1e2f;
+  border-radius: 15px;
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 10px;
+  width: 100%; /* fits within parent container */
+  max-width: 100%; /* prevents overflow */
+}
+
+.forecast-label {
+  color: #ccc;
+  font-size: 14px;
+  margin-bottom: 10px;
+}
+
+.forecast-detail-temp {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.forecast-description {
+  color: #aaa;
+  font-size: 14px;
+}
+
+.forecast-chart-placeholder {
+  height: 40px;
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  margin-top: 10px;
+}

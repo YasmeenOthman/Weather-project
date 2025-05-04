@@ -1,13 +1,15 @@
-import './WeatherMap.css';
+import "./WeatherMap.css";
 
 function WeatherMap() {
   return (
     <div className="weather-map">
-        <h2>Weather Map</h2>
-        <p>Rainy Storm Clouds</p>
-        <p>Florida, US</p>
+      <div className="weather-map-header">
+        <h2>Weather condition Map</h2>
+      </div>
+      <p>Rainy Storm Clouds</p>
+      <p>Florida, US</p>
     </div>
-  )
-}       
+  );
+}
 
 export default WeatherMap;
