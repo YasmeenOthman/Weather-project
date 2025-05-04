@@ -1,18 +1,11 @@
 /* src/components/Highlights/SunriseCard.css */
-/* .highlight-card {
-  background-color: #1e1e2f;
-  border-radius: 15px;
-  padding: 20px;
-  flex: 1 1 200px;
-  min-width: 180px;
-} */
+
 .sunrise-card {
   background-color: #1e1e2f;
   border-radius: 15px;
   padding: 20px;
   flex: 1 1 200px;
   min-width: 180px;
-  background-color: olive;
 }
 .sunrise-card h3 {
   margin-bottom: 10px;

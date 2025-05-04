@@ -2,13 +2,12 @@
 .app {
   display: flex;
   flex-wrap: wrap;
-  height: 100vh;
+  min-height: 100vh;
   width: 100vw;
   background-color: #1e1e2f; /* dark background like the design */
   color: white;
-  font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
 }
-
 
 .main-content {
   flex: 1;
@@ -16,7 +15,6 @@
   flex-direction: column;
   padding: 20px;
   overflow-y: auto;
-
 }
 
 .top-section {
@@ -24,7 +22,6 @@
   flex-wrap: wrap;
   gap: 20px;
   margin-bottom: 20px;
-
   padding: 20px;
 }
 
