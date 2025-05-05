@@ -1,28 +1,64 @@
 // src/components/Forecast/Forecast.jsx
 import "./Forecast.css";
-import { useContext } from "react";
+import { useContext, useMemo } from "react";
 import { WeatherContext } from "../../context/WeatherContext";
-
-const mockForecast = [
-  { day: "Saturday", date: "25 July", temp: "29° / 18°", icon: "🌦️" },
-  { day: "Sunday", date: "25 July", temp: "29° / 18°", icon: "🌦️" },
-  { day: "Monday", date: "25 July", temp: "29° / 18°", icon: "🌦️" },
-  { day: "Tuesday", date: "26 July", temp: "21° / 16°", icon: "🌧️" },
-  { day: "Wednesday", date: "27 July", temp: "24° / 20°", icon: "☁️" },
-  { day: "Thursday", date: "28 July", temp: "30° / 17°", icon: "🌤️" },
-  { day: "Friday", date: "29 July", temp: "30° / 17°", icon: "🌤️" },
-];
 
 function Forecast() {
   const { forecast } = useContext(WeatherContext);
 
-  const forecastData = forecast?.list;
-  const forecastDataByDay = forecastData?.filter((item) => {
-    const date = new Date(item.dt * 1000);
-    return date.toLocaleDateString("en-US", { weekday: "long" });
-  });
+  // Group and summarize forecast data by day
+  const dailyForecast = useMemo(() => {
+    // If forecast data is not available, return an empty array
+    if (!forecast?.list) return [];
 
+    const days = {}; // Object to group forecast entries by day
 
+    forecast.list.forEach((item) => {
+      // Convert Unix timestamp to JavaScript Date object
+      const date = new Date(item.dt * 1000);
+
+      // Create a string key for the day (e.g., "Monday, 28 Apr")
+      const dayStr = date.toLocaleDateString("en-US", {
+        weekday: "long",
+        day: "numeric",
+        month: "short",
+      });
+      console.log(dayStr);
+      // Initialize this day's entry in the 'days' object if it doesn't exist yet
+      if (!days[dayStr]) {
+        days[dayStr] = {
+          // Store the day name and date separately for display
+          day: date.toLocaleDateString("en-US", { weekday: "long" }),
+          date: date.toLocaleDateString("en-US", {
+            day: "numeric",
+            month: "short",
+          }),
+          temps: [], // To store temperatures for each 3-hour segment
+          icons: [], // To store weather icons for each 3-hour segment
+        };
+      }
+
+      // Push current forecast data into the appropriate day group
+      days[dayStr].temps.push(item.main.temp);
+      days[dayStr].icons.push(item.weather[0].icon);
+    });
+
+    // Transform the 'days' object into an array of summarized daily forecast objects
+    return Object.values(days).map((day) => {
+      // Calculate max and min temperature for the day
+      const max = Math.round(Math.max(...day.temps));
+      const min = Math.round(Math.min(...day.temps));
+
+      // Return a formatted summary object for each day
+      return {
+        day: day.day, // e.g., "Monday"
+        date: day.date, // e.g., "28 Apr"
+        temp: `${max}° / ${min}°`, // e.g., "25° / 17°"
+        icon: `https://openweathermap.org/img/wn/${day.icons[0]}@2x.png`, // use the first icon
+      };
+    });
+  }, [forecast]); // Re-run only when forecast changes
+  console.log(dailyForecast);
   return (
     <div className="forecast-container">
       {/* Header with dropdown */}
@@ -37,10 +73,14 @@ function Forecast() {
 
       {/* Forecast list */}
       <div className="forecast-list">
-        {mockForecast.map((item, index) => (
+        {dailyForecast.map((item, index) => (
           <div className="forecast-item" key={index}>
             <div className="forecast-temp">
-              <span>{item.icon}</span>
+              <img
+                src={item.icon}
+                alt="weather icon"
+                className="forecast-icon"
+              />
               <span>{item.temp}</span>
             </div>
             <div className="forecast-date">

@@ -52,6 +52,10 @@
   padding: 10px;
   border-radius: 15px;
 }
+.forecast-icon {
+  width: 30px;
+  height: 30px;
+}
 
 .forecast-temp {
   display: flex;
@@ -64,6 +68,7 @@
 .forecast-date {
   color: #aaa;
   font-size: 12px;
+  width: 30%;
 }
 
 /* Tomorrow Card */
