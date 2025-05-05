@@ -9,7 +9,7 @@ import "./App.css";
 function App() {
   return (
     <div className="app">
-      <Sidebar />
+      {/* <Sidebar /> */}
       <main className="main-content">
         <section className="top-section">
           <WeatherCard />

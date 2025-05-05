@@ -4,7 +4,9 @@ import "./Sidebar.css";
 function Sidebar() {
   return (
     <aside className="sidebar">
-      <div className="logo">Weathry</div>
+      <div className="logo-container">
+        <h4 className="logo">Weathry</h4>
+      </div>
       <nav className="nav-links">
         <a href="#">Home</a>
         <a href="#">Map</a>

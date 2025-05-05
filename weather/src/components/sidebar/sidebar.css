@@ -8,11 +8,13 @@
   align-items: center;
   padding: 20px 0;
 }
-
+.logo-container {
+  background-color: red;
+}
 .logo {
   font-weight: bold;
   margin-bottom: 20px;
-  font-size: 14px;
+  font-size: 18px;
 }
 
 .nav-links {

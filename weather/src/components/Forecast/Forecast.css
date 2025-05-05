@@ -2,10 +2,11 @@
   border-radius: 20px;
   padding: 20px;
   background: linear-gradient(135deg, #29293d, #203a43, #2c5364);
-  flex: 1;
+
   display: flex;
   flex-direction: column;
   height: 400px;
+  flex: 1;
 }
 
 /* Forecast Header */
