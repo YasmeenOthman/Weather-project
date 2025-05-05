@@ -1,37 +1,21 @@
 // src/components/WeatherCard/WeatherCard.jsx
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import { fetchCurrentWeather } from "../../services/weatherService";
+import { WeatherContext } from "../../context/WeatherContext";
 import "./WeatherCard.css";
 
 function WeatherCard() {
-  const [city, setCity] = useState("");
-  const [weatherData, setWeatherData] = useState(null);
-  const [error, setError] = useState(null);
+  const { currentWeather, setCity, error } = useContext(WeatherContext);
+  const [input, setInput] = useState("");
 
-  const handleChange = (e) => {
-    setCity(e.target.value);
-  };
-  const handleSearch = async (e) => {
+  // handle change
+  const handleChange = (e) => setInput(e.target.value);
+
+  // handle search
+  const handleSearch = (e) => {
     e.preventDefault();
-    try {
-      const data = await fetchCurrentWeather(city);
-      setWeatherData(data);
-    } catch (error) {
-      setError(error);
-    }
+    if (input.trim()) setCity(input.trim());
   };
-  useEffect(() => {
-    const getWeather = async () => {
-      try {
-        const data = await fetchCurrentWeather("Palestine");
-        setWeatherData(data);
-      } catch (error) {
-        console.error("Failed to fetch weather:", error);
-      }
-    };
-
-    getWeather();
-  }, []);
 
   return (
     <div className="weather-card">
@@ -39,37 +23,48 @@ function WeatherCard() {
         <input
           type="text"
           placeholder="Search city..."
+          value={input}
           onChange={handleChange}
         />
         <button type="submit">🔍</button>
       </form>
-      <div className="weather-top">
-        <div className="weather-icon-container">
-          <img
-            src="https://openweathermap.org/img/wn/11d@2x.png"
-            alt="Weather Icon"
-            className="weather-icon"
-          />
-        </div>
-        <div className="temperature">
-          {weatherData && weatherData.main.temp}°C
-        </div>
-        <div className="weather-description-container">
-          <p className="weather-description">
-            {weatherData && weatherData.weather[0].description}
-          </p>
-        </div>
-      </div>
 
-      <div className="weather-info">
-        <p className="location">
-          {weatherData && weatherData.name},{" "}
-          {weatherData && weatherData.sys.country}
-        </p>
-        <p className="datetime">
-          {new Date(weatherData && weatherData.dt * 1000).toLocaleDateString()}
-        </p>
-      </div>
+      {/* error */}
+
+      {error && <p className="error-message">{error}</p>}
+
+      {/* weather */}
+
+      {currentWeather && (
+        <>
+          <div className="weather-top">
+            <div className="weather-icon-container">
+              <img
+                src={`https://openweathermap.org/img/wn/${currentWeather.weather[0].icon}@2x.png`}
+                alt="Weather Icon"
+                className="weather-icon"
+              />
+            </div>
+            <div className="temperature">
+              {Math.round(currentWeather.main.temp)}°C
+            </div>
+            <div className="weather-description-container">
+              <p className="weather-description">
+                {currentWeather.weather[0].description}
+              </p>
+            </div>
+          </div>
+
+          <div className="weather-info">
+            <p className="location">
+              {currentWeather.name}, {currentWeather.sys.country}
+            </p>
+            <p className="datetime">
+              {new Date(currentWeather.dt * 1000).toLocaleTimeString()}
+            </p>
+          </div>
+        </>
+      )}
     </div>
   );
 }

@@ -1,4 +1,5 @@
 // src/components/Highlights/Highlights.jsx
+
 import "./Highlights.css";
 import WindCard from "./cards/maincards/WindCard";
 import UVCard from "./cards/maincards/UVCard";

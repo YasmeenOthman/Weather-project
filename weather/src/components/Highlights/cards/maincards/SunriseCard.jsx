@@ -1,18 +1,33 @@
 // src/components/Highlights/SunriseCard.jsx
 import "./MainCard.css";
+import { useContext } from "react";
+import { WeatherContext } from "../../../../context/WeatherContext";
 
 function SunriseCard() {
+  const { currentWeather } = useContext(WeatherContext);
+
+  const sunrise = new Date(currentWeather?.sys?.sunrise * 1000);
+  const sunriseTime = sunrise.toLocaleTimeString([], {
+    hour: "2-digit",
+    minute: "2-digit",
+  });
+
+  const sunset = new Date(currentWeather?.sys?.sunset * 1000);
+  const sunsetTime = sunset.toLocaleTimeString([], {
+    hour: "2-digit",
+    minute: "2-digit",
+  });
   return (
     <div className="highlight-card sunrise-card main-card">
       <h3>Sunrise & Sunset</h3>
       <div className="sun-times main-card-content">
         <div className="sun-time main-card-content-item">
           <span className="label">Sunrise:</span>
-          <span className="value">6:32 AM</span>
+          <span className="value">{sunriseTime}</span>
         </div>
         <div className="sun-time main-card-content-item">
           <span className="label">Sunset:</span>
-          <span className="value">7:45 PM</span>
+          <span className="value">{sunsetTime}</span>
         </div>
       </div>
     </div>

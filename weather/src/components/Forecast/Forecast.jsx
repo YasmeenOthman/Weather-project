@@ -1,5 +1,7 @@
 // src/components/Forecast/Forecast.jsx
 import "./Forecast.css";
+import { useContext } from "react";
+import { WeatherContext } from "../../context/WeatherContext";
 
 const mockForecast = [
   { day: "Saturday", date: "25 July", temp: "29° / 18°", icon: "🌦️" },
@@ -12,6 +14,15 @@ const mockForecast = [
 ];
 
 function Forecast() {
+  const { forecast } = useContext(WeatherContext);
+
+  const forecastData = forecast?.list;
+  const forecastDataByDay = forecastData?.filter((item) => {
+    const date = new Date(item.dt * 1000);
+    return date.toLocaleDateString("en-US", { weekday: "long" });
+  });
+
+
   return (
     <div className="forecast-container">
       {/* Header with dropdown */}
