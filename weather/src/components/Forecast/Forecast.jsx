@@ -23,7 +23,7 @@ function Forecast() {
         day: "numeric",
         month: "short",
       });
-      console.log(dayStr);
+
       // Initialize this day's entry in the 'days' object if it doesn't exist yet
       if (!days[dayStr]) {
         days[dayStr] = {
@@ -58,7 +58,7 @@ function Forecast() {
       };
     });
   }, [forecast]); // Re-run only when forecast changes
-  console.log(dailyForecast);
+
   return (
     <div className="forecast-container">
       {/* Header with dropdown */}
