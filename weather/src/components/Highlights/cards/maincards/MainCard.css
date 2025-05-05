@@ -5,6 +5,7 @@
   flex: 1 1 200px;
   min-width: 180px;
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  height: 150px;
 }
 
 .main-card h3 {
@@ -13,7 +14,7 @@
 }
 
 .main-card-value {
-  font-size: 24px;
+  font-size: 22px;
   font-weight: bold;
 }
 

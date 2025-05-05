@@ -8,8 +8,9 @@
   display: flex;
   flex-wrap: wrap;
   min-height: 100vh;
+
   width: 100vw;
-  background-color: #0f0f1d; /* dark background like the design */
+  background-color: #0f0f1d;
   color: white;
   font-family: "Poppins", sans-serif;
 }
@@ -19,7 +20,6 @@
   display: flex;
   flex-direction: column;
   padding: 20px;
-  overflow-y: auto;
 }
 
 .top-section {
@@ -27,7 +27,7 @@
   flex-wrap: wrap;
   gap: 20px;
   margin-bottom: 20px;
-  padding: 20px;
+  /* padding: 20px; */
 }
 
 .bottom-section {

@@ -1,34 +1,32 @@
 /* src/components/Sidebar/Sidebar.css */
 .sidebar {
-    width: 80px;
-  
-    background-color: #29293d;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
-    padding: 20px 0;
-  }
-  
-  .logo {
-    font-weight: bold;
-    margin-bottom: 20px;
-    font-size: 14px;
-  }
-  
-  .nav-links {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-  }
-  
-  .nav-links a {
-    text-decoration: none;
-    color: #ccc;
-    font-size: 12px;
-  }
-  
-  .profile img {
-    border-radius: 50%;
-  }
-  
+  width: 80px;
+  background-color: #29293d;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 0;
+}
+
+.logo {
+  font-weight: bold;
+  margin-bottom: 20px;
+  font-size: 14px;
+}
+
+.nav-links {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: #ccc;
+  font-size: 12px;
+}
+
+.profile img {
+  border-radius: 50%;
+}

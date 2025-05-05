@@ -1,1 +1,0 @@
-// (optional) Global state (location, unit)
