@@ -2,31 +2,44 @@
 import { useState, useEffect, useContext } from "react";
 import { fetchCurrentWeather } from "../../services/weatherService";
 import { WeatherContext } from "../../context/WeatherContext";
+import { CiSearch } from "react-icons/ci";
+
 import "./WeatherCard.css";
 
 function WeatherCard() {
   const { currentWeather, setCity, error } = useContext(WeatherContext);
   const [input, setInput] = useState("");
+  const [isClicked, setIsClicked] = useState(false);
 
   // handle change
   const handleChange = (e) => setInput(e.target.value);
 
-  // handle search
-  const handleSearch = (e) => {
+  // handle toggle input
+  const handleButtonClick = (e) => {
     e.preventDefault();
-    if (input.trim()) setCity(input.trim());
+    if (!isClicked) {
+      // Step 1: Show the input field
+      setIsClicked(true);
+    } else if (input.trim()) {
+      // Step 2: Search and hide input field
+      setCity(input.trim());
+      setIsClicked(false);
+      setInput(""); // optionally reset the input
+    }
   };
 
   return (
     <div className="weather-card">
-      <form className="search-bar" onSubmit={handleSearch}>
+      <form className={`search-bar ${isClicked ? "show" : ""}`}>
         <input
-          type="text"
+          type="search"
           placeholder="Search city..."
           value={input}
           onChange={handleChange}
         />
-        <button type="submit">🔍</button>
+        <button type="submit" onClick={handleButtonClick}>
+          <CiSearch className="search-icon" />
+        </button>
       </form>
 
       {/* error */}
