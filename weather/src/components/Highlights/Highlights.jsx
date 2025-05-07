@@ -17,10 +17,10 @@ function Highlights() {
           <WindCard />
           <Humidity />
         </div>
-        <div className="highlight-column">
+        {/* <div className="highlight-column">
           <UVCard />
           <Visibility />
-        </div>
+        </div> */}
         <div className="highlight-column">
           <SunriseCard />
           <FeelsLike />

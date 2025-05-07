@@ -5,7 +5,6 @@
   flex: 1 1 200px;
   min-width: 180px;
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-  height: 150px;
 }
 
 .main-card h3 {
@@ -14,11 +13,18 @@
 }
 
 .main-card-value {
-  font-size: 22px;
+  font-size: 18px;
   font-weight: bold;
 }
 
 .main-card-label {
   font-size: 14px;
   color: #aaa;
+}
+.chart-wrapper {
+  width: 100%;
+  height: auto;
+  margin-top: 20px;
+  /* background-color: red; */
+  
 }
