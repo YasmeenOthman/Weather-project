@@ -1,9 +1,8 @@
 // src/components/WeatherCard/WeatherCard.jsx
 import { useState, useEffect, useContext } from "react";
-import { fetchCurrentWeather } from "../../services/weatherService";
 import { WeatherContext } from "../../context/WeatherContext";
 import { CiSearch } from "react-icons/ci";
-
+import { formatLocalTime } from "../../utils/time";
 import "./WeatherCard.css";
 
 function WeatherCard() {
@@ -73,7 +72,7 @@ function WeatherCard() {
               {currentWeather.name}, {currentWeather.sys.country}
             </p>
             <p className="datetime">
-              {new Date(currentWeather.dt * 1000).toLocaleTimeString()}
+              {formatLocalTime(currentWeather.dt, currentWeather.timezone)}
             </p>
           </div>
         </>

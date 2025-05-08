@@ -1,27 +1,29 @@
 import SunArc from "./SunArc"; // Import it here
 import { useContext } from "react";
 import { WeatherContext } from "../../../../context/WeatherContext";
-
+import { formatLocalTime } from "../../../../utils/time";
 function SunriseCard() {
   const { currentWeather } = useContext(WeatherContext);
 
-  const sunrise = new Date(currentWeather?.sys?.sunrise * 1000);
-  const sunset = new Date(currentWeather?.sys?.sunset * 1000);
+  const timezoneOffset = currentWeather?.timezone || 0;
 
-  const sunriseTime = sunrise.toLocaleTimeString([], {
-    hour: "2-digit",
-    minute: "2-digit",
-  });
-
-  const sunsetTime = sunset.toLocaleTimeString([], {
-    hour: "2-digit",
-    minute: "2-digit",
-  });
+  const sunriseTime = formatLocalTime(
+    currentWeather?.sys?.sunrise,
+    timezoneOffset
+  );
+  const sunsetTime = formatLocalTime(
+    currentWeather?.sys?.sunset,
+    timezoneOffset
+  );
 
   return (
     <div className="highlight-card sunrise-card main-card">
-      <h3>Sunrise & Sunset</h3>
-      <SunArc sunrise={sunrise} sunset={sunset} />
+      <div className="main-card-header">
+        <h3>Sunrise & Sunset</h3>
+      </div>
+      <div className="chart-wrapper">
+        <SunArc sunriseTime={sunriseTime} sunsetTime={sunsetTime} />
+      </div>
       <div className="sun-times main-card-content">
         <div className="sun-time main-card-content-item">
           <span className="label">Sunrise:</span>

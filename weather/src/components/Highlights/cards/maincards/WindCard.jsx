@@ -32,7 +32,9 @@ function WindCard() {
 
   return (
     <div className="highlight-card wind-card main-card">
-      <h3>Wind Status</h3>
+      <div className="main-card-header">
+        <h3>Wind Status</h3>
+      </div>
 
       <div className="chart-wrapper">
         <ResponsiveContainer width="100%" height={150}>

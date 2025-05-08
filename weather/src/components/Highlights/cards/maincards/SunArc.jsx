@@ -2,28 +2,16 @@ import { useSpring, animated } from "@react-spring/web";
 import { useEffect, useState } from "react";
 import { BsSunset } from "react-icons/bs";
 import { BsSunrise } from "react-icons/bs";
+import { getTimePercent, polarToCartesian } from "../../../../utils/time";
 import "./SunArc.css";
-function getTimePercent(sunrise, sunset, now) {
-  const total = sunset - sunrise;
-  const passed = now - sunrise;
-  return Math.max(0, Math.min(1, passed / total));
-}
 
-function polarToCartesian(cx, cy, r, angleDeg) {
-  const rad = (Math.PI * angleDeg) / 180;
-  return {
-    x: cx + r * Math.cos(rad),
-    y: cy - r * Math.sin(rad),
-  };
-}
-
-function SunArc({ sunrise, sunset }) {
+function SunArc({ sunriseTime, sunsetTime }) {
   const [percent, setPercent] = useState(0);
 
   useEffect(() => {
     const now = Date.now();
-    setPercent(getTimePercent(sunrise.getTime(), sunset.getTime(), now));
-  }, [sunrise, sunset]);
+    setPercent(getTimePercent(sunriseTime, sunsetTime, now));
+  }, [sunriseTime, sunsetTime]);
 
   const angle = percent * 180;
   const { x, y } = polarToCartesian(100, 100, 80, angle);
@@ -54,9 +42,10 @@ function SunArc({ sunrise, sunset }) {
           stroke="#555"
           strokeWidth="1"
         />
+        <div className="sun-icon left"></div>
         <circle cx="20" cy="100" r="3" fill="#FFD700" />
+        
         <circle cx="180" cy="100" r="3" fill="#FFD700" />
-
         <animated.circle
           r="6"
           fill="#FFD700"
