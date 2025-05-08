@@ -1,0 +1,25 @@
+.sun-arc-wrapper {
+  position: relative;
+  width: 100%;
+  height: 120px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.sun-icon {
+  color: #ffd700;
+  font-size: 20px;
+}
+
+.sun-icon.left {
+  position: absolute;
+  left: 0;
+  bottom: 10px;
+}
+
+.sun-icon.right {
+  position: absolute;
+  right: 0;
+  bottom: 10px;
+}

@@ -2,6 +2,7 @@
 import "./MainCard.css";
 import { useContext } from "react";
 import { WeatherContext } from "../../../../context/WeatherContext";
+import { PiWindThin } from "react-icons/pi";
 import {
   LineChart,
   Line,
@@ -28,20 +29,20 @@ function WindCard() {
       speed: currentWeather?.wind?.speed || 0,
     },
   ];
-  console.log(windData);
 
   return (
     <div className="highlight-card wind-card main-card">
-      <h3>Wind speed</h3>
-      <div className="main-card-value">{currentWeather?.wind?.speed} km/h</div>
+      <h3>Wind Status</h3>
+
       <div className="chart-wrapper">
         <ResponsiveContainer width="100%" height={150}>
           <LineChart data={windData}>
             <Line
               type="monotone"
               dataKey="speed"
-              stroke="#8884d8"
+              stroke="#2c5364"
               strokeWidth={2}
+              margin={{ left: 0 }}
             />
             <XAxis dataKey="time" tick={{ fill: "#ccc", fontSize: 10 }} />
             <YAxis
@@ -50,10 +51,20 @@ function WindCard() {
               tickLine={false}
               axisLine={false}
             />
-            <CartesianGrid stroke="#ccc" />
+            <CartesianGrid
+              stroke="#444"
+              strokeDasharray="3 3"
+              vertical={false}
+            />
+
             <Tooltip />
           </LineChart>
         </ResponsiveContainer>
+      </div>
+      <div className="main-card-value">
+        <PiWindThin className="wind-icon" />
+        <span>{currentWeather?.wind?.speed} </span>
+        <span className="main-card-label">km/h</span>
       </div>
     </div>
   );
