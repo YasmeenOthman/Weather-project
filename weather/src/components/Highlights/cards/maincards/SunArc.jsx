@@ -1,7 +1,6 @@
 import { useSpring, animated } from "@react-spring/web";
 import { useEffect, useState } from "react";
-import { BsSunset } from "react-icons/bs";
-import { BsSunrise } from "react-icons/bs";
+import { BsSunset, BsSunrise } from "react-icons/bs";
 import { getTimePercent, polarToCartesian } from "../../../../utils/time";
 import "./SunArc.css";
 
@@ -24,16 +23,16 @@ function SunArc({ sunriseTime, sunsetTime }) {
 
   return (
     <div className="sun-arc-wrapper">
-      <div className="sun-icon left">
-        <BsSunrise />
-      </div>
-      <svg viewBox="0 0 200 110" width="100%" height="100">
+      <svg viewBox="0 0 200 130" width="100%" height="160" overflow="visible">
+        {/* Arc Path */}
         <path
           d="M 20 100 A 80 80 0 0 1 180 100"
           stroke="#FFD700"
           fill="none"
           strokeDasharray="4 4"
         />
+
+        {/* Base Line */}
         <line
           x1="20"
           y1="100"
@@ -42,10 +41,26 @@ function SunArc({ sunriseTime, sunsetTime }) {
           stroke="#555"
           strokeWidth="1"
         />
-        <div className="sun-icon left"></div>
+
+        {/* Sunrise Marker */}
         <circle cx="20" cy="100" r="3" fill="#FFD700" />
-        
+        <foreignObject x="0" y="105" width="40" height="60">
+          <div className="sun-label">
+            <BsSunrise size={18} />
+            <div className="sun-time-text">{sunriseTime}</div>
+          </div>
+        </foreignObject>
+
+        {/* Sunset Marker */}
         <circle cx="180" cy="100" r="3" fill="#FFD700" />
+        <foreignObject x="160" y="105" width="40" height="60">
+          <div className="sun-label">
+            <BsSunset size={18} />
+            <div className="sun-time-text">{sunsetTime}</div>
+          </div>
+        </foreignObject>
+
+        {/* Animated Sun */}
         <animated.circle
           r="6"
           fill="#FFD700"
@@ -54,9 +69,6 @@ function SunArc({ sunriseTime, sunsetTime }) {
           style={sunStyles}
         />
       </svg>
-      <div className="sun-icon right">
-        <BsSunset />
-      </div>
     </div>
   );
 }

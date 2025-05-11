@@ -24,16 +24,6 @@ function SunriseCard() {
       <div className="chart-wrapper">
         <SunArc sunriseTime={sunriseTime} sunsetTime={sunsetTime} />
       </div>
-      <div className="sun-times main-card-content">
-        <div className="sun-time main-card-content-item">
-          <span className="label">Sunrise:</span>
-          <span className="value">{sunriseTime}</span>
-        </div>
-        <div className="sun-time main-card-content-item">
-          <span className="label">Sunset:</span>
-          <span className="value">{sunsetTime}</span>
-        </div>
-      </div>
     </div>
   );
 }
