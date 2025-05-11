@@ -15,12 +15,16 @@
 
 .small-card-content {
   display: flex;
-  justify-content: space-between;
   align-items: center;
+  gap: 20px;
 }
 
 .small-card-content-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+.card-icon {
+  font-size: 25px;
+  color: #ccc;
 }

@@ -1,6 +1,7 @@
 import "./SmallCard.css";
 import { useContext } from "react";
 import { WeatherContext } from "../../../../context/WeatherContext";
+import { WiHumidity } from "react-icons/wi";
 
 function Humidity() {
   const { currentWeather } = useContext(WeatherContext);
@@ -11,13 +12,12 @@ function Humidity() {
       <div className="humidity-card-header small-card-header">
         <h3>Humidity</h3>
       </div>
-      <div className="humidity-card-content small-card-content">
-        <div className="humidity-card-content-header small-card-content-header">
+      <div className="small-card-content">
+        <WiHumidity className="card-icon" />
+
+        <div>
           <p>{humidity}%</p>
         </div>
-        {/* <div className="humidity-card-content-body small-card-content-body">
-          <p>The dew point is {dewPoint}°C</p>
-        </div> */}
       </div>
     </div>
   );
