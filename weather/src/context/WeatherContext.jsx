@@ -47,6 +47,7 @@ export const WeatherProvider = ({ children }) => {
         }
 
         setCurrentWeather(current);
+
         setForecast(forecastData);
         setError(null);
       } catch (err) {
@@ -63,6 +64,8 @@ export const WeatherProvider = ({ children }) => {
       value={{
         currentWeather,
         forecast,
+        coords,
+        city,
         setCity,
         setCoords,
         setUseCoords,

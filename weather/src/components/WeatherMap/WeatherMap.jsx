@@ -1,12 +1,15 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import L from "leaflet";
-import { fetchWeatherByCoords } from "../../services/weatherService";
-import { cityLocations } from "../../utils/cityLocations";
+import {
+  fetchCurrentWeather,
+  fetchWeatherByCoords,
+} from "../../services/weatherService";
+import { WeatherContext } from "../../context/WeatherContext";
 import "leaflet/dist/leaflet.css";
 import "./WeatherMap.css";
 
-// Fix default marker icons (Leaflet bug in Webpack/Vite setups)
+// ✅ Fix for missing marker icons in Vite/Webpack setups
 delete L.Icon.Default.prototype._getIconUrl;
 L.Icon.Default.mergeOptions({
   iconRetinaUrl: new URL(
@@ -19,28 +22,39 @@ L.Icon.Default.mergeOptions({
 });
 
 const WeatherMap = () => {
-  const [cityWeatherData, setCityWeatherData] = useState([]);
+  const { coords, city } = useContext(WeatherContext);
+  const [weatherData, setWeatherData] = useState(null);
 
   useEffect(() => {
-    const fetchAllCities = async () => {
-      const all = await Promise.all(
-        cityLocations.map(async (city) => {
-          const weather = await fetchWeatherByCoords(city.lat, city.lon);
-          return { ...city, weather };
-        })
-      );
-      setCityWeatherData(all);
+    const fetchWeather = async () => {
+      try {
+        if (city) {
+          const data = await fetchCurrentWeather(city);
+          setWeatherData(data);
+        } else if (coords) {
+          const data = await fetchWeatherByCoords(coords.lat, coords.lon);
+          setWeatherData(data);
+        }
+      } catch (err) {
+        console.error("Failed to fetch weather data for map:", err);
+        setWeatherData(null);
+      }
     };
 
-    fetchAllCities();
-  }, []);
+    fetchWeather();
+  }, [city, coords]);
+
+  // 🗺️ Determine Map Center
+  const center = weatherData
+    ? [weatherData.coord.lat, weatherData.coord.lon]
+    : [31.9522, 35.2332]; // Default center (Amman or your choice)
 
   return (
     <div className="weather-map">
       <h2>Weather condition map</h2>
       <MapContainer
-        center={[31.9522, 35.2332]}
-        zoom={3}
+        center={center}
+        zoom={6}
         scrollWheelZoom={true}
         style={{ height: "500px", width: "100%" }}
       >
@@ -48,18 +62,19 @@ const WeatherMap = () => {
           attribution="&copy; OpenStreetMap contributors"
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
-        {cityWeatherData.map((city, i) => (
-          <Marker key={i} position={[city.lat, city.lon]}>
+
+        {weatherData && (
+          <Marker position={[weatherData.coord.lat, weatherData.coord.lon]}>
             <Popup>
-              <strong>{city.name}</strong>
+              <strong>{weatherData.name}</strong>
               <br />
-              🌡️ {Math.round(city.weather.main.temp)}°C
+              🌡️ {Math.round(weatherData.main.temp)}°C
               <br />
-              💧 {city.weather.main.humidity}%<br />
-              💨 {city.weather.wind.speed} km/h
+              💧 {weatherData.main.humidity}%<br />
+              💨 {weatherData.wind.speed} km/h
             </Popup>
           </Marker>
-        ))}
+        )}
       </MapContainer>
     </div>
   );
