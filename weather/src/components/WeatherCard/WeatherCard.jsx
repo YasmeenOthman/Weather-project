@@ -6,10 +6,10 @@ import { formatLocalTime } from "../../utils/time";
 import "./WeatherCard.css";
 
 function WeatherCard() {
-  const { currentWeather, setCity, error } = useContext(WeatherContext);
+  const { currentWeather, setCity, setCoords, setUseCoords, error } =
+    useContext(WeatherContext);
   const [input, setInput] = useState("");
   const [isClicked, setIsClicked] = useState(false);
-
   // handle change
   const handleChange = (e) => setInput(e.target.value);
 
@@ -21,6 +21,7 @@ function WeatherCard() {
       setIsClicked(true);
     } else if (input.trim()) {
       // Step 2: Search and hide input field
+      setUseCoords(false); // <--- new
       setCity(input.trim());
       setIsClicked(false);
       setInput(""); // optionally reset the input

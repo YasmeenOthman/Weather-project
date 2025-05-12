@@ -26,3 +26,10 @@ export const fetchForecast = async (city) => {
   });
   return response.data;
 };
+
+export const fetchWeatherByCoords = async (lat, lon) => {
+  const res = await axios.get(
+    `${BASE_URL}/weather?lat=${lat}&lon=${lon}&units=metric&appid=${API_KEY}`
+  );
+  return res.data;
+};
