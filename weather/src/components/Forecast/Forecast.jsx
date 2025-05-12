@@ -2,6 +2,7 @@
 import "./Forecast.css";
 import { useContext, useMemo } from "react";
 import { WeatherContext } from "../../context/WeatherContext";
+import TomorrowCard from "./TomorrowCard";
 
 function Forecast() {
   const { forecast } = useContext(WeatherContext);
@@ -91,24 +92,7 @@ function Forecast() {
         ))}
       </div>
 
-      {/* Tomorrow special card */}
-
-      <div className="tomorrow-card">
-        <img
-          src="https://cdn-icons-png.flaticon.com/512/1146/1146869.png"
-          alt="storm icon"
-          className="tomorrow-icon"
-        />
-        <div className="tomorrow-card-content">
-          <div className="tomorrow-label">Tomorrow</div>
-          <div className="tomorrow-temp">23°</div>
-          <div className="tomorrow-description">Thunder Storm Day</div>
-        </div>
-
-        <div className="tomorrow-chart">
-          {/* Add a chart image or react-chart if needed */}
-        </div>
-      </div>
+      <TomorrowCard tomorrow={dailyForecast[1]} />
     </div>
   );
 }

@@ -11,8 +11,9 @@ function SunArc({ sunriseTime, sunsetTime }) {
     const now = Date.now();
     setPercent(getTimePercent(sunriseTime, sunsetTime, now));
   }, [sunriseTime, sunsetTime]);
+  const safePercent = isNaN(percent) ? 0 : percent;
+  const angle = safePercent * 180;
 
-  const angle = percent * 180;
   const { x, y } = polarToCartesian(100, 100, 80, angle);
 
   const sunStyles = useSpring({
