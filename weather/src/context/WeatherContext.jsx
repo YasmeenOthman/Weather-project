@@ -47,7 +47,6 @@ export const WeatherProvider = ({ children }) => {
         }
 
         setCurrentWeather(current);
-
         setForecast(forecastData);
         setError(null);
       } catch (err) {

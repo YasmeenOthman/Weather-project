@@ -55,7 +55,7 @@ const WeatherMap = () => {
       <MapContainer
         center={center}
         zoom={6}
-        scrollWheelZoom={true}
+        scrollWheelZoom={false}
         style={{ height: "500px", width: "100%" }}
       >
         <TileLayer
