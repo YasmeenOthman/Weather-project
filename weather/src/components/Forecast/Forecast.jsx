@@ -11,7 +11,11 @@ function Forecast() {
   const dailyForecast = useMemo(() => {
     // If forecast data is not available, return an empty array
     if (!forecast?.list) return [];
-
+    const todayStr = new Date().toLocaleDateString("en-US", {
+      weekday: "long",
+      day: "numeric",
+      month: "short",
+    });
     const days = {}; // Object to group forecast entries by day
 
     forecast.list.forEach((item) => {
@@ -65,11 +69,11 @@ function Forecast() {
       {/* Header with dropdown */}
       <div className="forecast-header">
         <h2>7 days Forecast</h2>
-        <select className="forecast-select">
+        {/* <select className="forecast-select">
           <option value="7">7 day</option>
           <option value="5">5 day</option>
           <option value="3">3 day</option>
-        </select>
+        </select> */}
       </div>
 
       {/* Forecast list */}
