@@ -1,5 +1,5 @@
 // src/App.jsx
-import Sidebar from "./components/Sidebar/Sidebar";
+// import Sidebar from "./components/Sidebar/Sidebar";
 import WeatherCard from "./components/WeatherCard/WeatherCard";
 import Highlights from "./components/Highlights/Highlights";
 import Forecast from "./components/Forecast/Forecast";
