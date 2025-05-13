@@ -8,7 +8,7 @@ import {
 import { WeatherContext } from "../../context/WeatherContext";
 import "leaflet/dist/leaflet.css";
 import "./WeatherMap.css";
-
+import MapUpdater from "./MapUpdater";
 // ✅ Fix for missing marker icons in Vite/Webpack setups
 delete L.Icon.Default.prototype._getIconUrl;
 L.Icon.Default.mergeOptions({
@@ -36,7 +36,8 @@ const WeatherMap = () => {
           setWeatherData(data);
         }
       } catch (err) {
-        console.error("Failed to fetch weather data for map:", err);
+        console.log("Failed to fetch weather data for map:", err);
+        alert("Failed to fetch weather data for map");
         setWeatherData(null);
       }
     };
@@ -55,14 +56,14 @@ const WeatherMap = () => {
       <MapContainer
         center={center}
         zoom={6}
-        scrollWheelZoom={false}
+        scrollWheelZoom={true}
         style={{ height: "500px", width: "100%" }}
       >
+        <MapUpdater center={center} />
         <TileLayer
           attribution="&copy; OpenStreetMap contributors"
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
-
         {weatherData && (
           <Marker position={[weatherData.coord.lat, weatherData.coord.lon]}>
             <Popup>
