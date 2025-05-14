@@ -2,10 +2,8 @@
 
 import "./Highlights.css";
 import WindCard from "./cards/maincards/WindCard";
-import UVCard from "./cards/maincards/UVCard";
 import SunriseCard from "./cards/maincards/SunriseCard";
 import Humidity from "./cards/smallcards/Humidity";
-import Visibility from "./cards/smallcards/Visibility";
 import FeelsLike from "./cards/smallcards/FeelsLike";
 
 function Highlights() {
@@ -17,10 +15,6 @@ function Highlights() {
           <WindCard />
           <Humidity />
         </div>
-        {/* <div className="highlight-column">
-          <UVCard />
-          <Visibility />
-        </div> */}
         <div className="highlight-column">
           <SunriseCard />
           <FeelsLike />
