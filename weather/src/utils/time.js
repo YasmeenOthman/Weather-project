@@ -8,6 +8,25 @@ export function formatLocalTime(dt, timezoneOffset) {
     timeZone: "UTC",
   });
 }
+export function formatLocalDateTime(dt, timezoneOffset) {
+  const localTime = new Date((dt + timezoneOffset) * 1000);
+
+  const date = localTime.toLocaleDateString("en-GB", {
+    day: "2-digit",
+    month: "short",
+    year: "numeric",
+    timeZone: "UTC",
+  });
+
+  const time = localTime.toLocaleTimeString("en-US", {
+    hour: "2-digit",
+    minute: "2-digit",
+    hour12: true,
+    timeZone: "UTC",
+  });
+
+  return `${date} • ${time}`;
+}
 
 export function getTimePercent(sunriseTime, sunsetTime, now) {
   const total = sunsetTime - sunriseTime;

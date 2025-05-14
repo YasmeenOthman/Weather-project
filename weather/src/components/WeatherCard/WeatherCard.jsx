@@ -1,8 +1,11 @@
 // src/components/WeatherCard/WeatherCard.jsx
 import { useState, useEffect, useContext } from "react";
+import { IoLocationOutline } from "react-icons/io5";
+import { LuCalendarDays } from "react-icons/lu";
+
 import { WeatherContext } from "../../context/WeatherContext";
 import { CiSearch } from "react-icons/ci";
-import { formatLocalTime } from "../../utils/time";
+import { formatLocalTime, formatLocalDateTime } from "../../utils/time";
 import "./WeatherCard.css";
 
 function WeatherCard() {
@@ -69,12 +72,21 @@ function WeatherCard() {
           </div>
 
           <div className="weather-info">
-            <p className="location">
-              {currentWeather.name}, {currentWeather.sys.country}
-            </p>
-            <p className="datetime">
-              {formatLocalTime(currentWeather.dt, currentWeather.timezone)}
-            </p>
+            <div className="weather-info-location">
+              <IoLocationOutline />
+              <p className="location">
+                {currentWeather.name}, {currentWeather.sys.country}
+              </p>
+            </div>
+            <div className="weather-info-date-time">
+              <LuCalendarDays />
+              <p className="datetime">
+                {formatLocalDateTime(
+                  currentWeather.dt,
+                  currentWeather.timezone
+                )}
+              </p>
+            </div>
           </div>
         </>
       )}

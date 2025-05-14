@@ -9,6 +9,7 @@ import { WeatherContext } from "../../context/WeatherContext";
 import "leaflet/dist/leaflet.css";
 import "./WeatherMap.css";
 import MapUpdater from "./MapUpdater";
+
 // ✅ Fix for missing marker icons in Vite/Webpack setups
 delete L.Icon.Default.prototype._getIconUrl;
 L.Icon.Default.mergeOptions({
@@ -48,7 +49,7 @@ const WeatherMap = () => {
   // 🗺️ Determine Map Center
   const center = weatherData
     ? [weatherData.coord.lat, weatherData.coord.lon]
-    : [31.9522, 35.2332]; // Default center (Amman or your choice)
+    : [31.9522, 35.2332]; // Default center (Palestine)
 
   return (
     <div className="weather-map">

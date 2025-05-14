@@ -6,7 +6,7 @@
   flex: 1;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: space-around;
   background: linear-gradient(135deg, #29293d, #203a43, #2c5364);
 }
 
@@ -35,6 +35,12 @@
 
 .weather-info {
   margin-top: 20px;
+}
+.weather-info-location,
+.weather-info-date-time {
+  display: flex;
+  align-items: center;
+  gap: 10px;
 }
 
 .weather-description {
