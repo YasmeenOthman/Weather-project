@@ -24,8 +24,10 @@ Weathery is a simple and elegant weather app built with React. It uses the [Open
 
   
 ## 📸 Screenshots 
-<img width="1280" alt="weathercards" src="https://github.com/user-attachments/assets/a3c94441-294d-48c2-a24c-e763f3f566cc" />
-<img width="1280" alt="forecast & map" src="https://github.com/user-attachments/assets/d9a568f7-a000-4886-b43c-6281b34f05b9" />
+<img width="1280" alt="weathercard&highlights" src="https://github.com/user-attachments/assets/7d1b453d-b1d9-44d5-bafd-ba19e824a59c" />
+<img width="1280" alt="forecast&map" src="https://github.com/user-attachments/assets/1196ea15-6884-435c-a5e3-7c66ddba38d4" />
+
+
 
 ## 🌐 Live Demo
 🔗 [Try the Live App](https://weatheryyas.netlify.app/)
